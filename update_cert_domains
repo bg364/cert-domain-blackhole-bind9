@@ -1,0 +1,13 @@
+#!/bin/bash
+CERT_URI="https://hole.cert.pl/domains/domains.txt"
+DOMAINS=$(curl --silent $CERT_URI)
+ZONES=""
+
+while read -r line
+do
+        ZONES+="zone \"${line}\" IN { type master; file \"/etc/named/cert-blackhole.zone\"; };
+"
+done <<< "$DOMAINS"
+
+echo "$ZONES" > "/etc/named/cert-blackhole.conf"
+service named reload
