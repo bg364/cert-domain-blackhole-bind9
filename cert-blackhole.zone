@@ -1,0 +1,13 @@
+$TTL 6000
+@       IN      SOA     localhost       root.localhost (
+        2021010801
+        1h
+        15m
+        3w
+        2m
+)
+@       IN      A       195.187.6.33
+@       IN      NS      ns1
+*       IN      A       195.187.6.33
+*       IN      A       195.187.6.34
+*       IN      A       195.187.6.35
